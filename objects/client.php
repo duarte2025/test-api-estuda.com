@@ -32,6 +32,35 @@ function read(){
  
     return $stmt;
 }
+// create product
+function create(){
+ 
+    // query to insert record
+    $query = "INSERT INTO
+                " . $this->table_name . "
+            SET
+                nome=:nome, email=:email";
+ 
+    // prepare query
+    $stmt = $this->conn->prepare($query);
+ 
+    // sanitize
+    $this->nome=htmlspecialchars(strip_tags($this->nome));
+    $this->email=htmlspecialchars(strip_tags($this->email));
+ 
+    // bind values
+    $stmt->bindParam(":nome", $this->nome);
+    $stmt->bindParam(":email", $this->email);
+
+ 
+    // execute query
+    if($stmt->execute()){
+        return true;
+    }
+ 
+    return false;
+     
+}
 
 }
 ?>
