@@ -7,7 +7,7 @@ class Demand{
  
     // object properties
     public $id;
-    public $cliend_id;
+    public $client_id;
     public $status;
     public $created;
     public $total_item;
@@ -18,6 +18,18 @@ class Demand{
         $this->conn = $db;
     }
 
-    
+    // used by select drop-down list
+    public function readOne($idOfClient){
+        //select all data of client
+        $query = "SELECT *
+                FROM
+                    ".$this->table_name.
+                    " WHERE client_id=" .$idOfClient."";
+        $stmt = $this->conn->prepare( $query );
+        $stmt->execute();
+
+        return $stmt;
+    }
+        
 }
 ?>

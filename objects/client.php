@@ -32,7 +32,7 @@ function read(){
  
     return $stmt;
 }
-// create product
+// create client
 function create(){
  
     // query to insert record
