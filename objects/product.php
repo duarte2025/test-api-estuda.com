@@ -37,7 +37,7 @@ class Product{
     
         //select all data
         $query = "SELECT
-                    id, name, description
+                    id, name, price, description
                 FROM
                     " . $this->table_name . "
                 ORDER BY

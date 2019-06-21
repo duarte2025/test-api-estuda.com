@@ -32,7 +32,6 @@ if($num>0){
         // this will make $row['name'] to
         // just $name only
         extract($row);
- 
         $product_item=array(
             "id" => $id,
             "name" => $name,
