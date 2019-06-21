@@ -1,5 +1,5 @@
 <?php
-class Demand{
+class Itens{
  
     // database connection and table name
     private $conn;
@@ -14,6 +14,19 @@ class Demand{
     // constructor with $db as database connection
     public function __construct($db){
         $this->conn = $db;
+    }
+
+    // used by select drop-down list
+    public function readOne($idOfClient){
+        //select all data of client
+        $query = "SELECT *
+                FROM
+                    ".$this->table_name.
+                    " WHERE id_demand = " .$idOfClient."";
+        $stmt = $this->conn->prepare( $query );
+        $stmt->execute();
+
+        return $stmt;
     }
 
     
