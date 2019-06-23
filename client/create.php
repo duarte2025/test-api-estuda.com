@@ -19,7 +19,7 @@ $client = new Client($db);
  
 // get posted data
 $data = json_decode(file_get_contents("php://input"));
- 
+
 // make sure data is not empty
 if(
     !empty($data->nome) &&
@@ -57,7 +57,7 @@ else{
     // set response code - 400 bad request
     http_response_code(400);
  
-    // tell the user
-    echo json_encode(array("message" => "Unable to create client. Data is incomplete."));
+
+    echo json_encode(array("message" => "Unable to create client. Data is $data   incomplete."));
 }
 ?>
