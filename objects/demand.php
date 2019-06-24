@@ -32,13 +32,13 @@ class Demand{
     }
     // read demand
     function read(){
-    
+
         // select all query
         $query = "SELECT
-                    *
+                    c.nome as client_nome, p.id, p.created, p.status, p.total_price, p.total_item
                 FROM
-                    " . $this->table_name . "";
-    
+                    " . $this->table_name . " p LEFT JOIN cliente c ON p.client_id = c.id";
+
         // prepare query statement
         $stmt = $this->conn->prepare($query);
     

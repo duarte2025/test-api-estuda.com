@@ -41,7 +41,7 @@ if($num>0){
             "status" => $status,
             "total_item" => $total_item,
             "total_price" => $total_price,
-            "client_id" => $client_id
+            "client_nome" => $client_nome
         );
  
         array_push($demand_arr["records"], $demand_item);
