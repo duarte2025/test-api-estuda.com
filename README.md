@@ -1,5 +1,7 @@
-# test-api-estuda.com
-API para teste na Estuda.com
-DEPEDÊNCIA
-PHP7
-MYSQL
+##API para teste na Estuda.com
+###DEPEDÊNCIA
+1.PHP7
+2.MYSQL
+3.SEVIDOR PHP(UTILIZEI LAMPP)
+
+
