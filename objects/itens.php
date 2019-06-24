@@ -19,10 +19,14 @@ class Itens{
     // used by select drop-down list
     public function readOne($idOfClient){
         //select all data of client
-        $query = "SELECT *
+        $query = "SELECT c.name as product_name, p.id_demand, p.quant, p.total_price
                 FROM
                     ".$this->table_name.
-                    " WHERE id_demand = " .$idOfClient."";
+                    " p LEFT JOIN
+                    products c
+                        ON p.id_product = c.id WHERE p.id_demand = " .$idOfClient."";
+                        
+        
         $stmt = $this->conn->prepare( $query );
         $stmt->execute();
 
