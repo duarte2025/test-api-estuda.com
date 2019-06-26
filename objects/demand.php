@@ -24,6 +24,18 @@ class Demand{
         $query = "SELECT *
                 FROM
                     ".$this->table_client_id.
+                    " WHERE id=" .$idOfClient."";
+        $stmt = $this->conn->prepare( $query );
+        $stmt->execute();
+
+        return $stmt;
+    }
+    // used by select drop-down list
+    public function readClient($idOfClient){
+        //select all data of client
+        $query = "SELECT *
+                FROM
+                    ".$this->table_client_id.
                     " WHERE client_id=" .$idOfClient."";
         $stmt = $this->conn->prepare( $query );
         $stmt->execute();
@@ -35,10 +47,9 @@ class Demand{
 
         // select all query
         $query = "SELECT
-                    c.nome as client_nome, p.id, p.created, p.status, p.total_data, p.total_item
+                    c.nome as client_nome, p.id, p.created, p.status, p.total_price, p.total_item
                 FROM
                     " . $this->table_client_id . " p LEFT JOIN cliente c ON p.client_id = c.id";
-
         // prepare query statement
         $stmt = $this->conn->prepare($query);
     
@@ -48,30 +59,29 @@ class Demand{
         return $stmt;
     }
 
-        // delete the client
-        function delete(){
-        
-            // delete query
-            $query = "DELETE FROM " . $this->table_client_id . " WHERE id = ?";
+    // delete the client
+    function delete(){
     
-            // prepare query
-            $stmt = $this->conn->prepare($query);
-    
-            // sanitize
-            $this->id=htmlspecialchars(strip_tags($this->id));
-    
-            // bind id of record to delete
-            $stmt->bindParam(1, $this->id);
-    
-            // execute query
-            if($stmt->execute()){
-                return true;
-            }
-    
-            return false;
-            
+        // delete query
+        $query = "DELETE FROM " . $this->table_client_id . " WHERE id = ?";
+
+        // prepare query
+        $stmt = $this->conn->prepare($query);
+
+        // sanitize
+        $this->id=htmlspecialchars(strip_tags($this->id));
+
+        // bind id of record to delete
+        $stmt->bindParam(1, $this->id);
+
+        // execute query
+        if($stmt->execute()){
+            return true;
         }
 
+        return false;
+        
+    }   
         // create product
     function create(){
     
